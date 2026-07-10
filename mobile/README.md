@@ -92,7 +92,7 @@
 ---
 ## การส่งงาน
 
-เมื่อทำ Assignment เสร็จแล้ว รบกวนส่งลิงก์ GitHub Repository มาที่ top.k@sparkjoy.in.th พร้อม README ตามที่ระบุในโจทย์
+เมื่อทำ Assignment เสร็จแล้ว รบกวนส่งลิงก์ GitHub Repository มาที่ top.k@sparkjoy.in.th และ cc ไปที่ bright.t@sparkjoy.in.th พร้อม README ตามที่ระบุในโจทย์
 
 เพื่อความสะดวกในการตรวจงาน แนะนำให้ตั้งค่า Repository เป็น Public เพื่อความสะดวกในการตรวจ
 

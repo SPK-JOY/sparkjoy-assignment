@@ -16,6 +16,13 @@ Assignment นี้ออกแบบให้ใช้เวลาประม
 
 ไม่จำเป็นต้องทำทุกอย่างให้ครบ หากมีเวลาจำกัด สามารถเลือกทำเฉพาะส่วนที่ต้องการแสดงศักยภาพ และอธิบายเหตุผลไว้ใน README
 
+หากมีเวลาจำกัด แนะนำให้จัดลำดับความสำคัญดังนี้
+
+1. ฟีเจอร์หลักตาม System Requirements ทำงานได้จริง
+2. คุณภาพโค้ด การออกแบบ Data Model และ API
+3. Docker Compose
+4. หัวข้อ Plus
+
 ---
 
 
@@ -39,6 +46,10 @@ Assignment นี้ออกแบบให้ใช้เวลาประม
 | `postedBy` | ผู้สร้าง Post                                       |
 | `tags`     | Tag ของ Post โดยหนึ่ง Post สามารถมีได้มากกว่า 1 Tag |
 
+> สิ่งที่ควรทราบเกี่ยวกับข้อมูล
+>
+> - ข้อมูลมีจำนวนประมาณ 10,000 Posts การออกแบบวิธี Seed และวิธีแสดงผลควรคำนึงถึงปริมาณข้อมูลนี้ด้วย
+> - ข้อมูลไม่มี Field `id` มาให้ การออกแบบ Primary Key และความสัมพันธ์ของข้อมูล เช่น Tags เป็นส่วนหนึ่งของการออกแบบ Data Model ที่เราสนใจ
 
 ---
 
@@ -51,8 +62,14 @@ Assignment นี้ออกแบบให้ใช้เวลาประม
 - ผู้ใช้งานต้อง Login ก่อนเข้าใช้งาน
 - แสดงรายการ Post ทั้งหมด
 - ดูรายละเอียดของแต่ละ Post
-- แสดงผล HTML Content ได้อย่างถูกต้อง
+- แสดงผล HTML Content ได้อย่างถูกต้องและปลอดภัย
 - Filter Post ตาม Tag ได้
+
+> เกี่ยวกับ Login
+>
+> - เราไม่ได้เตรียมข้อมูลผู้ใช้มาให้ ผู้สมัครสามารถ Seed Test Account ขึ้นมาเองได้ และระบุข้อมูลสำหรับ Login ไว้ใน README
+> - เลือกวิธี Authentication ได้อย่างอิสระ เช่น Session หรือ JWT พร้อมอธิบายเหตุผลที่เลือกใช้
+> - ไม่จำเป็นต้องมีหน้า Register
 
 ---
 
@@ -86,7 +103,7 @@ Assignment นี้ออกแบบให้ใช้เวลาประม
 
 สิ่งที่ต้องมี
 
-- Seed ข้อมูลจากไฟล์ `posts.json` ลง Database
+- Seed ข้อมูลจากไฟล์ `posts.json` ลง Database โดยควรรันได้ด้วยคำสั่งเดียวหรือรันอัตโนมัติเมื่อเริ่มระบบ
 - เลือกใช้ ORM หรือ Database Library ที่เหมาะสม เช่น Prisma, Drizzle, TypeORM หรือเครื่องมืออื่น
 - ออกแบบ Data Model หรือ Entity สำหรับข้อมูล Post
 - สร้าง REST API สำหรับใช้งานในระบบ
@@ -163,24 +180,33 @@ docker compose up --build
 
 ตัวอย่างเช่น
 
-- Pagination
+**User Experience**
+
+- Pagination หรือ Infinite Scroll
 - Search
 - Sorting
 - Responsive Design
-- Loading State
-- Empty State
-- Error State
-- Refresh Token Authentication
+- Loading State / Empty State / Error State
+
+**Testing**
+
 - Unit Test
 - Integration Test
 - End-to-End Test
+
+**API & Security**
+
 - API Documentation ด้วย Swagger หรือ OpenAPI
+- Refresh Token Authentication
+- Rate Limiting
+- Health Check Endpoint
+
+**Infrastructure**
+
 - Logging
 - Caching
 - CI/CD
 - Database Migration
-- Health Check Endpoint
-- Rate Limiting
 
 สามารถเลือกทำหัวข้ออื่นเพิ่มเติมได้ หากเห็นว่าเหมาะสม
 
@@ -190,20 +216,22 @@ docker compose up --build
 
 ## สิ่งที่เราจะพิจารณา
 
-เราไม่ได้พิจารณาเฉพาะความครบของฟีเจอร์ แต่ให้ความสำคัญกับคุณภาพของงานโดยรวม เช่น
+เราไม่ได้พิจารณาเฉพาะความครบของฟีเจอร์ แต่ให้ความสำคัญกับคุณภาพของงานโดยรวม
 
-- Code Quality
-- Project Structure
-- Architecture and Design Pattern
-- Data Modeling
-- API Design
+สิ่งที่เราให้น้ำหนักเป็นพิเศษ
+
+- Code Quality, Readability and Maintainability
+- Data Modeling และ API Design
 - Security
-- Performance
-- Readability and Maintainability
+- ความสะดวกในการติดตั้งและเริ่มต้นระบบ
+
+สิ่งที่เราพิจารณาประกอบ
+
+- Project Structure / Architecture and Design Pattern
 - Error Handling
+- Performance
 - Git Commit History
 - Problem Solving and Decision Making
-- ความสะดวกในการติดตั้งและเริ่มต้นระบบ
 - ความสามารถในการอธิบาย Trade-off ของสิ่งที่เลือกใช้
 
 ---
@@ -249,13 +277,14 @@ docker compose up --build
 - สามารถเลือกใช้ Library หรือ Framework ได้ตามความเหมาะสม
 - หากมีการตัดสินใจด้าน Architecture หรือมี Trade-off ที่น่าสนใจ สามารถอธิบายไว้ใน README ได้
 - สามารถตกแต่ง UI ได้อย่างอิสระ โดยเราไม่ได้เน้นความสวยงามเป็นหลัก
+- สามารถใช้ AI Tools ช่วยพัฒนาได้ แต่ผู้สมัครควรเข้าใจโค้ดทุกส่วนและอธิบายการตัดสินใจในการออกแบบได้ เนื่องจากอาจมีการพูดคุยเจาะลึกถึงงานชิ้นนี้ในขั้นตอนสัมภาษณ์
 
 ---
 ## การส่งงาน
 
 เมื่อทำ Assignment เสร็จแล้ว รบกวนส่งลิงก์ GitHub Repository มาที่ top.k@sparkjoy.in.th และ cc ไปที่ bright.t@sparkjoy.in.th พร้อม README ตามที่ระบุในโจทย์
 
-เพื่อความสะดวกในการตรวจงาน แนะนำให้ตั้งค่า Repository เป็น Public เพื่อความสะดวกในการตรวจ
+แนะนำให้ตั้งค่า Repository เป็น Public เพื่อความสะดวกในการตรวจงาน
 
 หากมีข้อสงสัยเกี่ยวกับโจทย์ สามารถสอบถามเพิ่มเติมได้ตลอดครับ 
 

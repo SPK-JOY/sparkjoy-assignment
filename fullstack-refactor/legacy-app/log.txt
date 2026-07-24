@@ -1,0 +1,2 @@
+Fri Jul 24 2026 16:09:26 GMT+0700 (Indochina Time) [1] boot
+Fri Jul 24 2026 16:09:28 GMT+0700 (Indochina Time) [2] login {"username":"admin","password":"admin1234"}

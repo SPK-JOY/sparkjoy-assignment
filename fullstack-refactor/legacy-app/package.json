@@ -1,0 +1,12 @@
+{
+  "name": "legacy-blog",
+  "version": "0.0.3",
+  "description": "blog",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
